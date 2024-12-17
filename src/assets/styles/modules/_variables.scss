@@ -1,0 +1,73 @@
+:root {
+  --font-text: Inter, system-ui, sans-serif;
+  --font-mono: Recursive, monospace;
+
+  --fs-step-0: clamp(0.89rem, 0.07vi + 0.87rem, 0.99rem);
+  --fs-step-1: clamp(1rem, 0.14vi + 0.97rem, 1.19rem);
+  --fs-step-2: clamp(1.13rem, 0.22vi + 1.07rem, 1.43rem);
+  --fs-step-3: clamp(1.27rem, 0.33vi + 1.19rem, 1.71rem);
+  --fs-step-4: clamp(1.42rem, 0.46vi + 1.32rem, 2.05rem);
+  --fs-step-5: clamp(1.6rem, 0.63vi + 1.45rem, 2.46rem);
+  --fs-step-6: clamp(1.8rem, 0.84vi + 1.6rem, 2.95rem);
+  --fs-step-7: clamp(2.03rem, 1.11vi + 1.77rem, 3.55rem);
+  --fs-step-8: clamp(2.28rem, 1.45vi + 1.94rem, 4.26rem);
+  --fs-step-9: clamp(2.57rem, 1.86vi + 2.13rem, 5.11rem);
+  --fs-step-10: clamp(2.89rem, 2.37vi + 2.33rem, 6.13rem);
+  --fs-step-11: clamp(3.25rem, 3.01vi + 2.54rem, 7.35rem);
+  --fs-step-12: clamp(3.65rem, 3.79vi + 2.77rem, 8.82rem);
+
+  --spacing-kerning: normal;
+  --spacing-letter-spacing-display: -0.1rem;
+  --spacing-letter-spacing-title: -0.08rem;
+  --spacing-letter-spacing-text: 0.05rem;
+  --spacing-display-line-height: 1.16;
+  --spacing-large-text-line-height: 1.7;
+  --spacing-body-line-height: 1.6;
+  --spacing-25: 0.25rem;
+  --spacing-50: 0.5rem;
+  --spacing-100: 1rem;
+  --spacing-150: 1.5rem;
+  --spacing-200: 2rem;
+  --spacing-300: 3rem;
+  --spacing-400: 4rem;
+  --spacing-600: 6rem;
+  --spacing-800: 8rem;
+  --spacing-1600: 16rem;
+
+  --neutral-50: #f7f7f6;
+  --neutral-100: #e5e4e2;
+  --neutral-200: #cacac5;
+  --neutral-300: #a8a8a0;
+  --neutral-400: #85857c;
+  --neutral-500: #626259;
+  --neutral-600: #55554c;
+  --neutral-700: #46463f;
+  --neutral-800: #393a35;
+  --neutral-900: #32322f;
+  --neutral-950: #1b1b18;
+
+  --bug: #A7B723;
+  --dark: #75574C;
+  --dragon: #7037FF;
+  --electric: #F9CF30;
+  --fairy: #E69EAC;
+  --fighting: #C12239;
+  --fire: #F57D31;
+  --flying: #A891EC;
+  --ghost: #70559B;
+  --grass: #74CB48;
+  --ground: #DEC16B;
+  --ice: #9AD6DF;
+  --normal: #AAA67F;
+  --poison: #A43E9E;
+  --psychic: #FB5584;
+  --rock: #B69E31;
+  --steel: #B7B9D0;
+  --water: #6493EB;
+
+  $screen-size-xxl: 160rem;
+  $screen-size-xl: 120rem;
+  $screen-size-lg: 90rem;
+  $screen-size-md: 64rem;
+  $screen-size-sm: 48rem;
+}
