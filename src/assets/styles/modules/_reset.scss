@@ -21,8 +21,8 @@ body {
   font-kerning: normal;
   font-variant-ligatures: common-ligatures;
   scroll-behavior: smooth;
-  font-variation-settings: var(--font-weight-var);
-  font-weight: var(--font-weight-static);
+  font-variation-settings: 'wght' 400;
+  font-weight: 400;
   background-color: var(--neutral-0);
   color: var(--neutral-900);
 }
