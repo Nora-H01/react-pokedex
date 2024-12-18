@@ -7,14 +7,31 @@ function PokemonList() {
     async function fetchPokemonNames() {
       const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
       const data = await response.json()
+
+      const names = [];
+
+      data.results.map((item)=> {
+        console.log(item.name)
+        names.push(item.name);
+      })
+
+      return names;
+    }
+    
+    async function fetchPokemon() {
+      const pokemons = await fetchPokemonNames()
+
+      for (pokemon in pokemons){
+        let response;
+        response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+        
+        
+      }
       setPkmnList(data.results)
     }
-
-    fetchPokemonNames()
-    // async function fetchPokemon() {
-    //   const response = await fetch('https://pokeapi.co/api/v2/pokemon/{id or name}/');
-    // }
+    fetchPokemon()
   }, [])
+
 
   return (
     <div className='card__container --list'>
