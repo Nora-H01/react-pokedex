@@ -8,11 +8,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      //gap: var(--spacing-200);
+      gap: var(--spacing-200);
       padding: var(--spacing-200) 0;
       &__portrait {
         max-height: 200px;
-        width: auto;
+        width: 200px;
         &Container {
           border-radius: 1.5rem 0 0 1.5rem;
           padding: var(--spacing-100);
