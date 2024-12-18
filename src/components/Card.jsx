@@ -1,12 +1,12 @@
-import PkmnType from './PkmnType.jsx'
+import PkmnType from './PkmnType.jsx';
 
 function Card(props) {
-  let id = props.id
-  let portrait = props.portrait
-  let name = props.name
-  let types = props.types
-  let region = props.region
-  let generation = props.generation
+  let id = props.id;
+  let portrait = props.portrait;
+  let name = props.name;
+  let types = props.types;
+  let region = props.region;
+  let generation = props.generation;
 
   return (
     <div className='card --list'>
@@ -21,9 +21,9 @@ function Card(props) {
         <span className='card__pkmnData__id'>{id}</span>
         <h3 className='card__pkmnData__name'>{name}</h3>
         <div className='card__pkmnData__types'>
-          {types.map((type) => {
-            return <PkmnType type={type} />
-          })}
+          {types.map((type) => (
+            <PkmnType type={type.type.name} />
+          ))}
         </div>
         <div className='card__pkmnData__meta'>
           {/*<span className='card__pkmnData__meta__region'>{region}</span>*/}
@@ -31,7 +31,7 @@ function Card(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;
