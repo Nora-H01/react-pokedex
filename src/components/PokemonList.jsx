@@ -1,39 +1,49 @@
-import { useState, useEffect } from 'react'
-import PokemonCard from './Card.jsx'
+import { useState, useEffect } from 'react';
+import PokemonCard from './Card.jsx';
 
 function PokemonList() {
-  const [pkmnList, setPkmnList] = useState([])
+  const [pkmnList, setPkmnList] = useState([]);
   useEffect(() => {
     async function fetchPokemonNames() {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
-      const data = await response.json()
+      const response = await fetch(
+        'https://pokeapi.co/api/v2/pokemon?limit=20',
+      );
+      const data = await response.json();
 
       const names = [];
 
-      data.results.map((item)=> {
-       
+      data.results.map((item) => {
         names.push(item.name);
-      })
+      });
 
       return names;
     }
-    
-    async function fetchPokemon() {
-      const pokemons = await fetchPokemonNames()
-      console.log(pokemons)
-      for (let i= 0; i > pokemons.length; i++){
-        console.log(pokemons[i])
-        // let response;
-        // response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-        
-        // const pokemonJSON = await response.json()
-        // console.log(pokemonJSON)
-      }
-      // setPkmnList(data.results)
-    }
-    fetchPokemon()
-  }, [])
 
+    async function fetchPokemon() {
+      const pokemons = await fetchPokemonNames();
+      for (let i = 0; i <= pokemons.length - 1; i++) {
+        let response;
+        response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`,
+        );
+
+        const pokemonJSON = await response.json();
+
+        const pokemon = {
+          id: pokemonJSON.id,
+          portrait:
+            pokemonJSON.sprites.other['official-artwork']['front_default'],
+          name: pokemonJSON.name,
+          types: pokemonJSON.types,
+        };
+
+        setPkmnList((prev) => [...prev, pokemon]);
+      }
+    }
+
+    fetchPokemon();
+    console.log(pkmnList);
+  }, []);
 
   return (
     <div className='card__container --list'>
@@ -43,12 +53,12 @@ function PokemonList() {
           id='0001'
           portrait='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'
           name={pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1)}
-          region='Kantoh'
-          generation='1'
+          // region='Kantoh'
+          // generation='1'
           types={['Poison', 'Plant']}
         />
       ))}
     </div>
-  )
+  );
 }
-export default PokemonList
+export default PokemonList;

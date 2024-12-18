@@ -26,8 +26,8 @@ function Card(props) {
           })}
         </div>
         <div className='card__pkmnData__meta'>
-          <span className='card__pkmnData__meta__region'>{region}</span>
-          <span className='card__pkmnData__meta__generation'>{generation}</span>
+          {/*<span className='card__pkmnData__meta__region'>{region}</span>*/}
+          {/*<span className='card__pkmnData__meta__generation'>{generation}</span>*/}
         </div>
       </div>
     </div>
