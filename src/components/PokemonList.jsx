@@ -11,7 +11,7 @@ function PokemonList() {
       const names = [];
 
       data.results.map((item)=> {
-        console.log(item.name)
+       
         names.push(item.name);
       })
 
@@ -20,14 +20,16 @@ function PokemonList() {
     
     async function fetchPokemon() {
       const pokemons = await fetchPokemonNames()
-
-      for (pokemon in pokemons){
-        let response;
-        response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+      console.log(pokemons)
+      for (let i= 0; i > pokemons.length; i++){
+        console.log(pokemons[i])
+        // let response;
+        // response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
         
-        
+        // const pokemonJSON = await response.json()
+        // console.log(pokemonJSON)
       }
-      setPkmnList(data.results)
+      // setPkmnList(data.results)
     }
     fetchPokemon()
   }, [])
