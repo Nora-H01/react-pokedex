@@ -1,5 +1,6 @@
 @use 'modules/variables';
 @use 'modules/reset';
 @use 'modules/typography';
+@use 'modules/section';
 
-@use 'components/pokemon';
+@use 'components/card';
