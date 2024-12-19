@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
 import PokemonCard from './Card.jsx';
 
-function PokemonList() {
+function PokemonList({ searchTerm }) {
   const [pkmnList, setPkmnList] = useState([]);
 
   useEffect(() => {
     async function fetchPokemon() {
       try {
-        // List
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
         const data = await response.json();
 
-        // Promise.all
         const detailedPokemonList = await Promise.all(
           data.results.map(async (item) => {
             const res = await fetch(item.url);
@@ -26,7 +24,6 @@ function PokemonList() {
           }),
         );
 
-        // update
         setPkmnList(detailedPokemonList);
       } catch (error) {
         console.error('Erreur lors du fetch des Pokémon:', error);
@@ -36,9 +33,17 @@ function PokemonList() {
     fetchPokemon();
   }, []);
 
+  const filteredPkmns = pkmnList.filter((pkmn) =>
+    pkmn.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (filteredPkmns.length === 0) {
+    return <div>Pokemon not found</div>;
+  }
+
   return (
     <div className='card__container --list'>
-      {pkmnList.map((pkmn) => (
+      {filteredPkmns.map((pkmn) => (
         <PokemonCard
           key={pkmn.id}
           id={pkmn.id}
