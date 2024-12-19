@@ -3,62 +3,52 @@ import PokemonCard from './Card.jsx';
 
 function PokemonList() {
   const [pkmnList, setPkmnList] = useState([]);
+
   useEffect(() => {
-    async function fetchPokemonNames() {
-      const response = await fetch(
-        'https://pokeapi.co/api/v2/pokemon?limit=50',
-      );
-      const data = await response.json();
-
-      const names = [];
-
-      data.results.map((item) => {
-        names.push(item.name);
-      });
-
-      return names;
-    }
-
     async function fetchPokemon() {
-      const pokemons = await fetchPokemonNames();
-      for (let i = 0; i <= pokemons.length - 1; i++) {
-        let response;
-        response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`,
+      try {
+        // List
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+        const data = await response.json();
+
+        // Promise.all
+        const detailedPokemonList = await Promise.all(
+          data.results.map(async (item) => {
+            const res = await fetch(item.url);
+            const pokemonData = await res.json();
+
+            return {
+              id: pokemonData.id,
+              portrait: pokemonData.sprites.other['official-artwork'].front_default,
+              name: pokemonData.name,
+              types: pokemonData.types.map((type) => type.type.name), 
+            };
+          }),
         );
 
-        const pokemonJSON = await response.json();
-
-        const pokemon = {
-          id: pokemonJSON.id,
-          portrait:
-            pokemonJSON.sprites.other['official-artwork']['front_default'],
-          name: pokemonJSON.name,
-          types: pokemonJSON.types,
-        };
-
-        setPkmnList((prev) => [...prev, pokemon]);
+        // update
+        setPkmnList(detailedPokemonList);
+      } catch (error) {
+        console.error('Erreur lors du fetch des Pokémon:', error);
       }
     }
 
     fetchPokemon();
-    console.log(pkmnList);
   }, []);
 
   return (
     <div className='card__container --list'>
       {pkmnList.map((pkmn) => (
         <PokemonCard
-          key={pkmn.name}
+          key={pkmn.id}
           id={pkmn.id}
           portrait={pkmn.portrait}
           name={pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1)}
-          // region='Kantoh'
-          // generation='1'
           types={pkmn.types}
         />
       ))}
     </div>
   );
 }
+
 export default PokemonList;

@@ -21,9 +21,9 @@ function Card(props) {
         <span className='card__pkmnData__id'>{id}</span>
         <h3 className='card__pkmnData__name'>{name}</h3>
         <div className='card__pkmnData__types'>
-          {types.map((type) => (
-            <PkmnType type={type.type.name} />
-          ))}
+          {types.map((type) => {
+            return <PkmnType type={type} />
+          })}
         </div>
         <div className='card__pkmnData__meta'>
           {/*<span className='card__pkmnData__meta__region'>{region}</span>*/}
