@@ -1,5 +1,11 @@
+import PokemonList from './components/PokemonList.jsx';
+
 function App() {
-  return <></>;
+  return (
+    <section className='section'>
+      <PokemonList />
+    </section>
+  );
 }
 
 export default App;
