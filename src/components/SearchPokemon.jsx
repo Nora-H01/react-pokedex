@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import 
 
 function SearchPokemon({ setSearchTerm }) {
   const [inputValue, setInputValue] = useState(''); 
@@ -16,7 +15,7 @@ function SearchPokemon({ setSearchTerm }) {
     <div className='search__container'>
       <input
         type='text'
-        placeholder='Rechercher un Pokémon'
+        placeholder='Search a Pokemon'
         value={inputValue}
         onChange={handleInputChange}
         className='search__input'
