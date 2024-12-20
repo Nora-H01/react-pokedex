@@ -1,4 +1,4 @@
-function favoritePokemons(){}
+function favoritePokemon(){}
 
-export default favoritePokemons
+export default favoritePokemon
 
