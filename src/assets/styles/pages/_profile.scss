@@ -1,0 +1,101 @@
+@use "../components/header";
+@use "../modules/section";
+
+.profile {
+  &__header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-items: center;
+    padding: var(--spacing-400) var(--spacing-800);
+    &__portrait {
+      &Container {
+        grid-column: 1 / 3;
+        grid-row: 1 / 7;
+        max-width: 300px;
+        height: 100%;
+        z-index: 3;
+      }
+    }
+    &__name {
+      grid-column: 2 / 4;
+      grid-row: 1 / 5;
+      font-family: var(--font-text);
+      font-size: var(--fs-step-12);
+      font-style: italic;
+      font-variation-settings: "wght" 800;
+      z-index: 2;
+    }
+    &__id {
+      grid-column: 2 / 4;
+      grid-row: 1 / 7;
+      font-family: var(--font-text);
+      font-size: var(--fs-step-16);
+      //font-style: italic;
+      font-variation-settings: "wght" 400;
+      color: var(--neutral-200);
+      z-index: 1;
+      margin-top: var(--spacing-100);
+    }
+    &__types {
+      grid-row: 1/5;
+      grid-column: 3/4;
+      display: flex;
+      gap: var(--spacing-100);
+      justify-self: end;
+      flex-direction: column;
+      width: fit-content;
+    }
+  }
+  &__stats {
+    & h2 {
+      font-size: var(--fs-step-4);
+      font-variation-settings: "wght" 500;
+      margin-bottom: var(--spacing-150);
+    }
+    border-radius: 6rem;
+    height:1000px;
+    //background-color: var(--neutral-50);
+    padding: var(--spacing-800);
+    &Container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      justify-content: center;
+      gap: var(--spacing-200);
+      & .dataSheet {
+        display: flex;
+        gap: var(--spacing-50);
+        flex-direction: column;
+        background-color: var(--neutral-50);
+        border-radius: 1rem;
+        padding: var(--spacing-100);
+      }
+    }
+
+    &__details {
+      grid-column: 3 / 4;
+      grid-row: 1 / 4;
+    }
+
+    &__abilities {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    &__weaknesses {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    &__resistances {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    &__stats {
+      grid-row: 1 / 4;
+      grid-column: 2 / 3;
+    }
+  }
+}

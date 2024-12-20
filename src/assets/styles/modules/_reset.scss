@@ -23,10 +23,14 @@ body {
   scroll-behavior: smooth;
   font-variation-settings: 'wght' 400;
   font-weight: 400;
-  background-color: var(--neutral-0);
+  background-color: var(--neutral-100);
   color: var(--neutral-900);
 }
 
 img {
   display: block;
+}
+
+a {
+  text-decoration: none;
 }

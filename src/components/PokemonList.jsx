@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 import PokemonCard from './Card.jsx';
+import { NavLink, useNavigate } from 'react-router';
 
 function PokemonList() {
   const [pkmnList, setPkmnList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchPokemon() {
       try {
         // List
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+        const response = await fetch(
+          'https://pokeapi.co/api/v2/pokemon?limit=20',
+        );
         const data = await response.json();
 
         // Promise.all
@@ -19,9 +23,10 @@ function PokemonList() {
 
             return {
               id: pokemonData.id,
-              portrait: pokemonData.sprites.other['official-artwork'].front_default,
+              portrait:
+                pokemonData.sprites.other['official-artwork'].front_default,
               name: pokemonData.name,
-              types: pokemonData.types.map((type) => type.type.name), 
+              types: pokemonData.types.map((type) => type.type.name),
             };
           }),
         );
@@ -36,16 +41,23 @@ function PokemonList() {
     fetchPokemon();
   }, []);
 
+  function seePokemonProfile(name) {
+    navigate(`/pokemons/${name}`);
+  }
+
   return (
     <div className='card__container --list'>
       {pkmnList.map((pkmn) => (
-        <PokemonCard
-          key={pkmn.id}
-          id={pkmn.id}
-          portrait={pkmn.portrait}
-          name={pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1)}
-          types={pkmn.types}
-        />
+        <NavLink to={`/pokemons/${pkmn.name}`}>
+          <PokemonCard
+            key={pkmn.name}
+            id={pkmn.id}
+            portrait={pkmn.portrait}
+            name={pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1)}
+            types={pkmn.types}
+            onClick={() => seePokemonProfile(pkmn.name)}
+          />
+        </NavLink>
       ))}
     </div>
   );
