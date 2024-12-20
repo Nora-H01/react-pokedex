@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <header>
+        <h1>Nav</h1>
         <SearchPokemon setSearchTerm={setSearchTerm} />
       </header>
       <section className='section'>
