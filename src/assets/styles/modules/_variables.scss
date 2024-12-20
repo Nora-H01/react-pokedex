@@ -15,6 +15,14 @@
   --fs-step-10: clamp(2.89rem, 2.37vi + 2.33rem, 6.13rem);
   --fs-step-11: clamp(3.25rem, 3.01vi + 2.54rem, 7.35rem);
   --fs-step-12: clamp(3.65rem, 3.79vi + 2.77rem, 8.82rem);
+  --fs-step-13: clamp(4.11rem, 4.74vi + 3rem, 10.59rem);
+  --fs-step-14: clamp(4.62rem, 5.92vi + 3.24rem, 12.71rem);
+  --fs-step-15: clamp(5.2rem, 7.36vi + 3.48rem, 15.25rem);
+  --fs-step-16: clamp(5.85rem, 9.11vi + 3.72rem, 18.3rem);
+  --fs-step-17: clamp(6.58rem, 11.26vi + 3.95rem, 21.96rem);
+  --fs-step-18: clamp(7.41rem, 13.87vi + 4.16rem, 26.35rem);
+  --fs-step-19: clamp(8.33rem, 17.05vi + 4.34rem, 31.62rem);
+  --fs-step-20: clamp(9.37rem, 20.92vi + 4.47rem, 37.94rem);
 
   --spacing-kerning: normal;
   --spacing-letter-spacing-display: -0.1rem;
@@ -46,24 +54,24 @@
   --neutral-900: #32322f;
   --neutral-950: #1b1b18;
 
-  --bug: #A7B723;
-  --dark: #75574C;
-  --dragon: #7037FF;
-  --electric: #F9CF30;
-  --fairy: #E69EAC;
-  --fighting: #C12239;
-  --fire: #F57D31;
-  --flying: #A891EC;
-  --ghost: #70559B;
-  --grass: #74CB48;
-  --ground: #DEC16B;
-  --ice: #9AD6DF;
-  --normal: #AAA67F;
-  --poison: #A43E9E;
-  --psychic: #FB5584;
-  --rock: #B69E31;
-  --steel: #B7B9D0;
-  --water: #6493EB;
+  --color-bug: #A7B723;
+  --color-dark: #75574C;
+  --color-dragon: #7037FF;
+  --color-electric: #F9CF30;
+  --color-fairy: #E69EAC;
+  --color-fighting: #C12239;
+  --color-fire: #F57D31;
+  --color-flying: #A891EC;
+  --color-ghost: #70559B;
+  --color-grass: #74CB48;
+  --color-ground: #DEC16B;
+  --color-ice: #9AD6DF;
+  --color-normal: #AAA67F;
+  --color-poison: #A43E9E;
+  --color-psychic: #FB5584;
+  --color-rock: #B69E31;
+  --color-steel: #B7B9D0;
+  --color-water: #6493EB;
 
   $screen-size-xxl: 160rem;
   $screen-size-xl: 120rem;
