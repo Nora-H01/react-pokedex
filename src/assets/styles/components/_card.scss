@@ -6,6 +6,7 @@
   &__pkmn {
     &Data {
       display: flex;
+      text-decoration: none;
       flex-direction: column;
       justify-content: space-between;
       gap: var(--spacing-200);
@@ -27,6 +28,7 @@
       &__name {
         font-size: var(--fs-step-5);
         font-variation-settings: "wght" 700;
+        color: var(--neutral-950);
       }
       &__types {
         display: inline-flex;

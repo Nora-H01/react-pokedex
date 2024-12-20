@@ -22,7 +22,7 @@ function Card(props) {
         <h3 className='card__pkmnData__name'>{name}</h3>
         <div className='card__pkmnData__types'>
           {types.map((type) => {
-            return <PkmnType type={type} />
+            return <PkmnType key={type} type={type} />;
           })}
         </div>
         <div className='card__pkmnData__meta'>

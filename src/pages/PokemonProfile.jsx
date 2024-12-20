@@ -10,35 +10,25 @@ function PokemonProfile() {
   useEffect(() => {
     async function fetchOnePokemon() {
       try {
-        const response = await fetch(
+        const responseProfile = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
         );
 
-        const profile = await response.json();
-
-        setPkmnProfile(profile);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    async function fetchPokemonSpecies() {
-      try {
-        const response = await fetch(
+        const responseSpecies = await fetch(
           `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`,
         );
 
-        const species = await response.json();
+        const profile = await responseProfile.json();
+        const species = await responseSpecies.json();
 
+        setPkmnProfile(profile);
         setPkmnSpecies(species);
       } catch (error) {
         console.error(error);
       }
     }
-
     fetchOnePokemon();
-    fetchPokemonSpecies();
-  });
+  }, []);
 
   if (pkmnProfile) {
     return (
@@ -56,6 +46,11 @@ function PokemonProfile() {
               pkmnProfile.name.slice(1)}
           </h1>
           <p className='profile__header__id'>000{pkmnProfile.id}</p>
+          <div className='profile__header__types'>
+            {pkmnProfile.types.map((item) => (
+              <PkmnType key={item.type.name} type={item.type.name} />
+            ))}
+          </div>
         </header>
         <section className='profile__stats'>
           <div className='profile__statsContainer'>
@@ -63,7 +58,7 @@ function PokemonProfile() {
               <h2>Abilities</h2>
               <div className='dataSheet'>
                 {pkmnProfile.abilities.map((ability) => (
-                  <p>{ability.ability.name}</p>
+                  <p key={ability.ability.name}>{ability.ability.name}</p>
                 ))}
               </div>
             </div>
@@ -79,7 +74,7 @@ function PokemonProfile() {
               <h2>Stats</h2>
               <div className='dataSheet'>
                 {pkmnProfile.stats.map((stat) => (
-                  <p>
+                  <p key={stat.stat.name}>
                     {stat.stat.name} : {stat.base_stat}
                   </p>
                 ))}
@@ -88,6 +83,15 @@ function PokemonProfile() {
             <div className='profile__stats__details'>
               <h2>Details</h2>
               <div className='dataSheet'>
+                <p>Weight : {pkmnProfile.weight} kg</p>
+                <p>
+                  Egg groups :
+                  {pkmnSpecies.egg_groups.map((group) => (
+                    <span key={group.name}>
+                      {group.name.charAt(0).toUpperCase() + group.name.slice(1)}
+                    </span>
+                  ))}
+                </p>
                 <p>Capture rate : {pkmnSpecies.capture_rate}</p>
               </div>
             </div>
