@@ -1,4 +1,5 @@
 import PkmnType from './PkmnType.jsx';
+import FavoriteButton from './FavoriteButton.jsx';
 
 function Card(props) {
   let id = props.id;
@@ -30,6 +31,7 @@ function Card(props) {
           {/*<span className='card__pkmnData__meta__generation'>{generation}</span>*/}
         </div>
       </div>
+      <FavoriteButton />  
     </div>
   );
 }
