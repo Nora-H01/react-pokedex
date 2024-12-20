@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PokemonCard from './Card.jsx';
 
-function PokemonList({ searchTerm }) {
+function PokemonList({ searchTerm, filterCriteria }) {
   const [pkmnList, setPkmnList] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function PokemonList({ searchTerm }) {
               id: pokemonData.id,
               portrait: pokemonData.sprites.other['official-artwork'].front_default,
               name: pokemonData.name,
-              types: pokemonData.types.map((type) => type.type.name), 
+              types: pokemonData.types.map((type) => type.type.name),
             };
           }),
         );
@@ -33,9 +33,12 @@ function PokemonList({ searchTerm }) {
     fetchPokemon();
   }, []);
 
-  const filteredPkmns = pkmnList.filter((pkmn) =>
-    pkmn.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPkmns = pkmnList.filter((pkmn) => {
+    const matchesSearch = pkmn.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType =
+      filterCriteria.length === 0 || filterCriteria.some((type) => pkmn.types.includes(type));
+    return matchesSearch && matchesType;
+  });
 
   if (filteredPkmns.length === 0) {
     return <div>Pokemon not found</div>;
