@@ -1,19 +1,37 @@
 import { useState } from 'react';
 import PokemonList from './components/PokemonList.jsx';
-import SearchPokemon from './components/SearchPokemon.jsx';
+import Header from './components/Header.jsx';
+import FavoritePokemons from './pages/FavoritePokemons.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState(''); // État partagé
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const router = createBrowserRouter([
+    {
+      path:"/",
+      element:(    
+      <>
+        <Header setSearchTerm={setSearchTerm}/>
+        <section className='section'>
+          <PokemonList searchTerm={searchTerm} />
+        </section>
+      </>
+      )
+    },
+    {
+      path:"/favorites",
+      element:(
+        <>
+        <Header setSearchTerm={setSearchTerm}/>
+        <FavoritePokemons/>
+        </>
+      )
+    }
+  ])
 
   return (
-    <>
-      <header>
-        <SearchPokemon setSearchTerm={setSearchTerm} />
-      </header>
-      <section className='section'>
-        <PokemonList searchTerm={searchTerm} />
-      </section>
-    </>
+    <RouterProvider router={router}/>
   );
 }
 
