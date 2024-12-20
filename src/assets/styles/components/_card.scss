@@ -1,5 +1,6 @@
 .card {
   display: flex;
+  position: relative;
   background-color: var(--neutral-50);
   border-radius: 1.5rem;
   gap: var(--spacing-200);
@@ -45,7 +46,7 @@
       &__meta {
         display: flex;
         gap: var(--spacing-100);
-      }
+      }    
     }
   }
   &__container {
